@@ -101,9 +101,10 @@ public class Login extends Application {
 
     }
 
-    //--MAIN METHOD--//
-    public static void main(String args[]) {
-        launch(args);
-    }
 
+       
+public static void main(String[] args) {
+    launch(args);
+   
+}
 }

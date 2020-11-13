@@ -28,15 +28,6 @@ public class ChooseDate extends Application {
     //Creating DatePicker variable
     private DatePicker chooseDate;
 
-    //--MAIN METHOD--//
-    public static void main(String[] args) {
-        //Correct formatting of the calendar based off US
-        Locale.setDefault(Locale.US);
-        //Allowing code to be displayed 
-        launch(args);
-
-    }
-
     @Override
     public void start(Stage dateStage) {
         this.dateStage = dateStage;
@@ -104,5 +95,14 @@ public class ChooseDate extends Application {
         //Changing the color of the No Button
         noButton.setStyle("-fx-background-color: #FF0000");
 
+    }
+    
+    public DatePicker getChooseDate() {
+        return chooseDate;
+    }
+ 
+    
+    public static void main(String[] args) {
+    launch(args);
     }
 }

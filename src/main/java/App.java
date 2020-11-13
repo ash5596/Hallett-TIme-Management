@@ -9,6 +9,8 @@ date:
 import Controller.Controller;
 import Model.Model;
 import View.View;
+import java.util.Locale;
+import static javafx.application.Application.launch;
 
 public class App {
 
@@ -18,7 +20,25 @@ public class App {
         //Creating view object
         View view = new View();
         //Creating controller object -- passing in model and view
-        //Controller controller = new Controller(model, view);
+        
+        
+        
+        
+        Controller controller = new Controller(model, view);
+        
+        
+          
+        //Correct formatting of the calendar based off US
+        Locale.setDefault(Locale.US);
+        //Allowing code to be displayed 
+        launch(args);
+        //
+        launch(args);
+    }
     }
 
-}
+    
+    
+    
+
+

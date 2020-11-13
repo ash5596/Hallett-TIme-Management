@@ -47,11 +47,6 @@ public class MainStage extends Application {
 
     }
 
-    //----MAIN----//
-    public static void main(String[] args) {
-
-        Application.launch(args);
-    }
     
     //Creating class for the notes window
     class NotesStage {
@@ -75,6 +70,7 @@ public class MainStage extends Application {
         notesStage.show();
     }
 }
-    
-    
+    public static void main(String[] args) {
+    launch(args);
+}
 }

@@ -11,4 +11,10 @@ package View;
  */
 public class View {
     
+    ChooseDate chooseDate;
+    Login login;
+    MainStage mainStage;
+    
+    //Constructor
+   
 }

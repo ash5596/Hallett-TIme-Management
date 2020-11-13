@@ -11,5 +11,13 @@ package Model;
  */
 public class Model {
     
+    
+}
+
+    
+    get getChooseDate {
+        return datePicker;
+}
+            
 }
 //database
