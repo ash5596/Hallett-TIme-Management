@@ -8,7 +8,10 @@ Description:
 
 
 package View;
+import java.awt.event.ActionEvent;
 import javafx.application.Application;
+import static javafx.application.ConditionalFeature.FXML;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
@@ -35,19 +38,26 @@ public class MainStage extends Application {
         Button notesButton = new Button("NOTES");
         Button weekButton = new Button("WEEK");
         Button monthButton = new Button("MONTH");
+        Button loginButton = new Button("LOGIN");
+        Button exitButton = new Button("EXIT");
 
         //notesButton.setOnAction(eve -> new notesStage());
         //Adding the buttons
         newFlow.getChildren().add(notesButton);
         newFlow.getChildren().add(weekButton);
         newFlow.getChildren().add(monthButton);
+        newFlow.getChildren().add(loginButton);
+        newFlow.getChildren().add(exitButton);
 
         primaryStage.setScene(startScene);
         primaryStage.show();
-
+        
+        //Adding action to the exitButton button -- To close program
+        exitButton.setOnAction(e -> Platform.exit());
+  
     }
+   
 
-    
     //Creating class for the notes window
     class NotesStage {
 
