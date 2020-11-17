@@ -113,14 +113,10 @@ public class MainStage extends Application {
         //Setting the auxilliary scenes to show
         window.show();
 
-        
-        
-        
         //Adding action to the weekButton on main scene -- will open aux scene when clicked 
         //This scene will allow the user to see their data on a week to week view 
         //Adding action to the week buttonon main scene -- will open aux scene when clicked
         weekButton.setOnAction(e -> window.setScene(weekScene));
-        
 
         //Creating a new layout for the notesScene when opened
         VBox weekBox = new VBox();
@@ -147,16 +143,10 @@ public class MainStage extends Application {
         //Setting the auxilliary scenes to show
         window.show();
 
-        
-        
-        
-        
-        
         //Adding action to the monthButton on main scene -- will open aux scene when clicked
         //This scene will allow the user to see their data on a month to month view 
         //Adding action to the notes buttonon main scene -- will open aux scene when clicked
         monthButton.setOnAction(e -> window.setScene(monthScene));
-        
 
         //Creating a new layout for the month when opened
         VBox monthBox = new VBox();
@@ -183,15 +173,12 @@ public class MainStage extends Application {
         //Setting the auxilliary scenes to show
         window.show();
 
-        
-        
-        
         //Adding action to the loginButton on main scene -- will open aux scene when clicked
         //This scene will allow the user to create their account -- will show correct data after
         //They login based on what account they log into 
         //Adding action to the notes buttonon main scene -- will open aux scene when clicked
         loginButton.setOnAction(e -> window.setScene(loginScene));
-        
+
         //Creating a new layout for the notesScene when opened
         VBox loginBox = new VBox();
         loginBox.setPadding(new Insets(15));
@@ -242,7 +229,6 @@ public class MainStage extends Application {
 //
 //        }
 //    }
-
     public static void main(String[] args) {
         launch(args);
     }
