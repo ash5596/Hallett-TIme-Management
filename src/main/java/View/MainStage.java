@@ -3,8 +3,8 @@ Author: Andrew Hallett
 Project: Hallett_Time_Management
 Prof: Dr.Yeh
 Class: IST 261 App Dev Studio
-Description: This class is the main menu for the project. From here users can 
-login, check notes, view by week or month as well as exit the program.
+Description: This class is the home screen of the application
+allows users to choose which screen they want to visit. 
  */
 package View;
 
@@ -36,7 +36,7 @@ public class MainStage extends Application {
 
     //Global Variables
     Stage window;
-    Scene notesScene, weekScene, monthScene, loginScene, mainScene;
+    Scene notesScene, weekScene, monthScene, loginScene, mainScene, scheduleScene;
     //Variables that are going to be used for week and month view scenes 
     //DOUBLE CHECK LATER IF THEY SHOULD BE PRIVATE VARIABLES OR FINAL OR NEITHER 
     private Locale locale = Locale.US;
@@ -63,6 +63,7 @@ public class MainStage extends Application {
         Button monthButton = new Button("MONTH");
         Button loginButton = new Button("LOGIN");
         Button exitButton = new Button("EXIT");
+        Button scheduleButton = new Button("Schedule Event");
 
         //notesButton.setOnAction(eve -> new notesStage());
         //Adding the buttons
@@ -71,13 +72,16 @@ public class MainStage extends Application {
         newFlow.getChildren().add(monthButton);
         newFlow.getChildren().add(loginButton);
         newFlow.getChildren().add(exitButton);
-
+        newFlow.getChildren().add(scheduleButton);
+        
         //Changing the spacing of the buttons on the main screne 
         newFlow.setHgap(20);
         newFlow.setVgap(20);
         //Adding borders around the window for the main scene using css
         //NEED TO MAKE THE OUTLINE BORDER LARGER
-        newFlow.setStyle("-fx-border-color: blue");
+        newFlow.setStyle("-fx-padding: 10;" + "-fx-border-style: solid;"
+        + "-fx-border-width: 20;" + "-fx-border-insets: 5;"
+        + "-fx-border-radius: 50;" + "-fx-border-color: blue;");
         //Making the scene be visible when the program is ran
         primaryStage.setScene(startScene);
         primaryStage.show();
@@ -203,6 +207,40 @@ public class MainStage extends Application {
 
         //Setting the auxilliary scenes to show
         window.show();
+        
+        
+        //Adding action to the loginButton on main scene -- will open aux scene when clicked
+        //This scene will allow the user to create their account -- will show correct data after
+        //They login based on what account they log into 
+        //Adding action to the notes buttonon main scene -- will open aux scene when clicked
+        loginButton.setOnAction(e -> window.setScene(scheduleScene));
+
+        //Creating a new layout for the notesScene when opened
+        VBox scheduleBox = new VBox();
+        scheduleBox.setPadding(new Insets(15));
+        scheduleBox.setSpacing(10);
+
+        Text scheduleTitle = new Text("Please schedule your next event here!");
+        scheduleBox.getChildren().add(scheduleTitle);
+        scheduleTitle.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+
+        //PROJECT FAILS TO RUN WHEN THIS LINE OF CODE IS ADDED -- (UNSURE WHY)
+        //notesBox.getChildren().add(notesTitle);
+        //Setting the layout and size for notesScene 
+        scheduleScene = new Scene(scheduleBox, 600, 400);
+
+        //Adding a button that will return the user to the main scene which they came from
+        //Will be able to reutn to the main scene 
+        Button scheduleButtonReturn = new Button("Main Menu");
+        //NOTE FOR SELF -- (startScene is the mainstage // homepage screne
+        scheduleButtonReturn.setOnAction(e -> window.setScene(startScene));
+        //Adding the button
+        scheduleBox.getChildren().add(scheduleButtonReturn);
+
+        //Setting the auxilliary scenes to show
+        window.show();
+        
+        
 
     }
 
