@@ -213,9 +213,9 @@ public class MainStage extends Application {
         //This scene will allow the user to create their account -- will show correct data after
         //They login based on what account they log into 
         //Adding action to the notes buttonon main scene -- will open aux scene when clicked
-        loginButton.setOnAction(e -> window.setScene(scheduleScene));
+        scheduleButton.setOnAction(e -> window.setScene(scheduleScene));
 
-        //Creating a new layout for the notesScene when opened
+        //Creating a new layout for the scheduleScene when opened
         VBox scheduleBox = new VBox();
         scheduleBox.setPadding(new Insets(15));
         scheduleBox.setSpacing(10);
@@ -225,8 +225,8 @@ public class MainStage extends Application {
         scheduleTitle.setFont(Font.font("Arial", FontWeight.BOLD, 16));
 
         //PROJECT FAILS TO RUN WHEN THIS LINE OF CODE IS ADDED -- (UNSURE WHY)
-        //notesBox.getChildren().add(notesTitle);
-        //Setting the layout and size for notesScene 
+        //scheduleBox.getChildren().add(scheduleTitle);
+        //Setting the layout and size for schedule scene 
         scheduleScene = new Scene(scheduleBox, 600, 400);
 
         //Adding a button that will return the user to the main scene which they came from
