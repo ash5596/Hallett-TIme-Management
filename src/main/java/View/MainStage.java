@@ -71,8 +71,9 @@ public class MainStage extends Application {
         newFlow.getChildren().add(weekButton);
         newFlow.getChildren().add(monthButton);
         newFlow.getChildren().add(loginButton);
-        newFlow.getChildren().add(exitButton);
         newFlow.getChildren().add(scheduleButton);
+        newFlow.getChildren().add(exitButton);
+        
         
         //Changing the spacing of the buttons on the main screne 
         newFlow.setHgap(20);
