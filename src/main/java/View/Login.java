@@ -80,7 +80,7 @@ public class Login extends Application {
         gridPane.add(emailField, 1, 0);
         gridPane.add(passText, 0, 1);
         gridPane.add(passField, 1, 1);
-        gridPane.add(enterButton, 2, 4);
+        gridPane.add(enterButton,0, 2, 2, 4);
         gridPane.add(clearUserButton, 1, 0, 2, 2);
         gridPane.add(clearPassButton, 1, 1, 3, 3);
 
@@ -115,15 +115,27 @@ public class Login extends Application {
         VBox sucessBox = new VBox();
         sucessBox.setPadding(new Insets(15));
         sucessBox.setSpacing(10);
+        //sucessBox.setStyle("-fx-border-color: red;")
+        //
+        gridPane.setHalignment(userText, HPos.CENTER);
 
         Text sucessText = new Text("Login Sucessful!");
         sucessBox.getChildren().add(sucessText);
         sucessText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         //Setting the layout and size for sucess scene login
         sucessScene = new Scene(sucessBox, 600, 400);
+        
+        //Setting border outline for the gridpane login scene
+        gridPane.setStyle("-fx-padding: 10;" + 
+                      "-fx-border-style: solid inside;" + 
+                      "-fx-border-width: 2;" +
+                      "-fx-border-insets: 5;" + 
+                      "-fx-border-radius: 5;" + 
+                      "-fx-border-color: blue;");
+        
 
         //Changing the size of buttons
-        enterButton.setPrefWidth(500);
+        enterButton.setPrefWidth(200);
         //Setting enter button to be in middle of scene
         enterButton.setAlignment(Pos.CENTER);
         //Changing size of both clear buttons
@@ -139,16 +151,13 @@ public class Login extends Application {
         gridPane.setStyle("-fx-background-color: GRAY;");
 
         //Aligning everything in the middle of the screen 
-        //userText.setAlignment(Pos.CENTER);
-        //passText.setAlignment(Pos.CENTER);
-        //emailField.setAlignment(Pos.CENTER);
-        //passField.setAlignment(Pos.CENTER);
-        //enterButton.setAlignment(Pos.CENTER);
-        //clearUserButton.setAlignment(Pos.CENTER);
-        //userText.setTextAlignment(TextAlignment.CENTER);
-        //gridPane.add(userText, 0, 1);
-        //GridPane.setHalignment(userText, HPos.CENTER);
-        //Creating a scene object 
+        
+        
+        
+        
+        
+        
+        
         Scene scene = new Scene(gridPane);
 
         //Setting title to the Stage 
@@ -162,6 +171,41 @@ public class Login extends Application {
 
     }
 
+    public void setLoginWindow(Stage loginWindow) {
+        this.loginWindow = loginWindow;
+    }
+
+    public void setLoginScene(Scene loginScene) {
+        this.loginScene = loginScene;
+    }
+
+    public void setSucessScene(Scene sucessScene) {
+        this.sucessScene = sucessScene;
+    }
+
+    public Stage getLoginWindow() {
+        return loginWindow;
+    }
+
+    public Scene getLoginScene() {
+        return loginScene;
+    }
+
+    public Scene getSucessScene() {
+        return sucessScene;
+    }
+
+    public static String getSTYLESHEET_CASPIAN() {
+        return STYLESHEET_CASPIAN;
+    }
+
+    public static String getSTYLESHEET_MODENA() {
+        return STYLESHEET_MODENA;
+    }
+
+    
+    
+    
     public static void main(String[] args) {
         launch(args);
 
