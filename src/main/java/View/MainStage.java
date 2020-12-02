@@ -27,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.Button;
 import javafx.geometry.Pos;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -63,7 +64,7 @@ public class MainStage extends Application {
         Button monthButton = new Button("MONTH");
         Button loginButton = new Button("LOGIN");
         Button exitButton = new Button("EXIT");
-        Button scheduleButton = new Button("Schedule Event");
+        Button scheduleButton = new Button("SCHEDULE");
 
         //notesButton.setOnAction(eve -> new notesStage());
         //Adding the buttons
@@ -73,19 +74,19 @@ public class MainStage extends Application {
         newFlow.getChildren().add(loginButton);
         newFlow.getChildren().add(scheduleButton);
         newFlow.getChildren().add(exitButton);
-        
-        
+
         //Changing the spacing of the buttons on the main screne 
         newFlow.setHgap(20);
         newFlow.setVgap(20);
         //Adding borders around the window for the main scene using css
         //NEED TO MAKE THE OUTLINE BORDER LARGER
         newFlow.setStyle("-fx-padding: 10;" + "-fx-border-style: solid;"
-        + "-fx-border-width: 20;" + "-fx-border-insets: 5;"
-        + "-fx-border-radius: 50;" + "-fx-border-color: blue;");
+                + "-fx-border-width: 20;" + "-fx-border-insets: 5;"
+                + "-fx-border-radius: 50;" + "-fx-border-color: blue;");
         //Making the scene be visible when the program is ran
         primaryStage.setScene(startScene);
         primaryStage.show();
+        //
 
         //Adding action to the exitButton button -- To close program
         exitButton.setOnAction(e -> Platform.exit());
@@ -106,6 +107,8 @@ public class MainStage extends Application {
         //notesBox.getChildren().add(notesTitle);
         //Setting the layout and size for notesScene 
         notesScene = new Scene(notesBox, 600, 400);
+        TextField notesText = new TextField();
+        notesText.setPrefWidth(500);
 
         //Adding a button that will return the user to the main scene which they came from
         //Will be able to reutn to the main scene 
@@ -208,8 +211,7 @@ public class MainStage extends Application {
 
         //Setting the auxilliary scenes to show
         window.show();
-        
-        
+
         //Adding action to the loginButton on main scene -- will open aux scene when clicked
         //This scene will allow the user to create their account -- will show correct data after
         //They login based on what account they log into 
@@ -240,34 +242,54 @@ public class MainStage extends Application {
 
         //Setting the auxilliary scenes to show
         window.show();
-        
-        
 
     }
 
-//    //Method that will get the days of this week based on real time  
-//    public void getDaysOfThisWeek() {
-//        //Setting the calendar to the current date -- in real time
-//        userCal.setTime(new Date());
-//        userCal.setFirstDayOfWeek(Calendar.MONDAY);
-//        //Setting the first day of the week -- MONDAY
-//        userCal.set(Calendar.DAY_OF_WEEK, userCal.getFirstDayOfWeek());
-//
-//        for (int i = 0; i < 7; i++) {
-//            //Reurning information now as prints to make sure works
-//            //Will be added as visuals later 
-//            String nameOfMonth = userCal.getDisplayName(Calendar.MONTH, Calendar.LONG, locale);
-//            String nameOfDay = userCal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, locale);
-//            int dayOfMonth = userCal.get(Calendar.DAY_OF_MONTH);
-//
-//            //Testing
-//            System.out.println(dayOfMonth + ":" + dateFormat.format(userCal.getTime()));
-//
-//            //Adjusting the field for day with add -- can adjust month later
-//            userCal.add(Calendar.DAY_OF_WEEK, 1);
-//
-//        }
-//    }
+
+
+    public void setWindow(Stage window) {
+        this.window = window;
+    }
+
+    public void setNotesScene(Scene notesScene) {
+        this.notesScene = notesScene;
+    }
+
+    public void setWeekScene(Scene weekScene) {
+        this.weekScene = weekScene;
+    }
+
+    public void setMonthScene(Scene monthScene) {
+        this.monthScene = monthScene;
+    }
+
+    public void setLoginScene(Scene loginScene) {
+        this.loginScene = loginScene;
+    }
+
+    public void setMainScene(Scene mainScene) {
+        this.mainScene = mainScene;
+    }
+
+    public void setScheduleScene(Scene scheduleScene) {
+        this.scheduleScene = scheduleScene;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
+    }
+
+    public void setUserCal(Calendar userCal) {
+        this.userCal = userCal;
+    }
+
+    public void setDateFormat(DateFormat dateFormat) {
+        this.dateFormat = dateFormat;
+    }
+    
+    
+    
+
     public static void main(String[] args) {
         launch(args);
     }
