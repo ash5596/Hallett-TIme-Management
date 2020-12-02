@@ -5,7 +5,7 @@ IST 261 Assignment:
 @author: Andrew Hallett
 date: 
  */
-
+ 
 
 package View;
 import java.util.Locale;
@@ -27,7 +27,7 @@ public class ChooseDate extends Application {
     private Stage dateStage;
     //Creating DatePicker variable
     private DatePicker chooseDate;
-
+    
     @Override
     public void start(Stage dateStage) {
         this.dateStage = dateStage;
@@ -96,10 +96,32 @@ public class ChooseDate extends Application {
         noButton.setStyle("-fx-background-color: #FF0000");
 
     }
-    
+
+    public Stage getDateStage() {
+        return dateStage;
+    }
+
     public DatePicker getChooseDate() {
         return chooseDate;
     }
+
+    public static String getSTYLESHEET_CASPIAN() {
+        return STYLESHEET_CASPIAN;
+    }
+
+    public static String getSTYLESHEET_MODENA() {
+        return STYLESHEET_MODENA;
+    }
+
+    public void setDateStage(Stage dateStage) {
+        this.dateStage = dateStage;
+    }
+
+    public void setChooseDate(DatePicker chooseDate) {
+        this.chooseDate = chooseDate;
+    }
+    
+   
  
     
     public static void main(String[] args) {
