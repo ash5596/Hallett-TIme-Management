@@ -114,6 +114,7 @@ public class MainStage extends Application {
         notesTextOne.setPrefWidth(500);
         notesTextOne.setPrefHeight(85);
         notesTextOne.setWrapText(true);
+        //test-----
 
         //Delete and save buttons for text area one
         Button deleteNotesOneButton;
