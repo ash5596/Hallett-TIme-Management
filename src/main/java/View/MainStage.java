@@ -21,16 +21,19 @@ import javafx.application.Application;
 import static javafx.application.ConditionalFeature.FXML;
 import javafx.application.Platform;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.Button;
 import javafx.geometry.Pos;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import static javafx.scene.text.FontWeight.BOLD;
 import javafx.scene.text.Text;
 
 public class MainStage extends Application {
@@ -86,7 +89,6 @@ public class MainStage extends Application {
         //Making the scene be visible when the program is ran
         primaryStage.setScene(startScene);
         primaryStage.show();
-        //
 
         //Adding action to the exitButton button -- To close program
         exitButton.setOnAction(e -> Platform.exit());
@@ -97,7 +99,7 @@ public class MainStage extends Application {
         //Creating a new layout for the notesScene when opened
         VBox notesBox = new VBox();
         notesBox.setPadding(new Insets(15));
-        notesBox.setSpacing(10);
+        notesBox.setSpacing(30);
 
         Text notesTitle = new Text("Welcome To The Notes Section -- Type Imporant Notes Here!");
         notesBox.getChildren().add(notesTitle);
@@ -107,8 +109,76 @@ public class MainStage extends Application {
         //notesBox.getChildren().add(notesTitle);
         //Setting the layout and size for notesScene 
         notesScene = new Scene(notesBox, 600, 400);
-        TextField notesText = new TextField();
-        notesText.setPrefWidth(500);
+        //Adding first text field to the notes scene
+        TextArea notesTextOne = new TextArea();
+        notesTextOne.setPrefWidth(500);
+        notesTextOne.setPrefHeight(85);
+        notesTextOne.setWrapText(true);
+
+        //Delete and save buttons for text area one
+        Button deleteNotesOneButton;
+        deleteNotesOneButton = new Button("Delete Text 1");
+        deleteNotesOneButton.setFont(Font.font("Zapfino", FontWeight.BOLD, 12));
+        Button saveNotesOneButton;
+        saveNotesOneButton = new Button("Save Text");
+        saveNotesOneButton.setFont(Font.font("Zapfino", FontWeight.BOLD, 12));
+        //Moving delete and save buttons to under the text field
+        deleteNotesOneButton.setTranslateX(0);
+        deleteNotesOneButton.setTranslateY(-163);
+        saveNotesOneButton.setTranslateX(150);
+        saveNotesOneButton.setTranslateY(-328);
+        //Changing color for delete and save button
+        deleteNotesOneButton.setStyle("-fx-background-color: #FF0000");
+        saveNotesOneButton.setStyle("-fx-background-color: #008000");
+
+        //Delete and save buttons for text area two
+        Button deleteNotesTwoButton;
+        deleteNotesTwoButton = new Button("Delete Text 2");
+        deleteNotesTwoButton.setFont(Font.font("Zapfino", FontWeight.BOLD, 12));
+        Button saveNotesTwoButton;
+        saveNotesTwoButton = new Button("Save Text");
+        saveNotesTwoButton.setFont(Font.font("Zapfino", FontWeight.BOLD, 12));
+        //Moving delete and save buttons to under the text field
+        deleteNotesTwoButton.setTranslateX(0);
+        deleteNotesTwoButton.setTranslateY(-150);
+        saveNotesTwoButton.setTranslateX(150);
+        saveNotesTwoButton.setTranslateY(-316);
+        //Changing color for delete and save button
+        deleteNotesTwoButton.setStyle("-fx-background-color: #FF0000");
+        saveNotesTwoButton.setStyle("-fx-background-color: #008000");
+
+        //Delete and save buttons for text area three
+        Button deleteNotesThreeButton;
+        deleteNotesThreeButton = new Button("Delete Text 3");
+        deleteNotesThreeButton.setFont(Font.font("Zapfino", FontWeight.BOLD, 12));
+        Button saveNotesThreeButton;
+        saveNotesThreeButton = new Button("Save Text");
+        saveNotesThreeButton.setFont(Font.font("Zapfino", FontWeight.BOLD, 12));
+        //Moving delete and save buttons to under the text field
+        deleteNotesThreeButton.setTranslateX(0);
+        deleteNotesThreeButton.setTranslateY(-138);
+        saveNotesThreeButton.setTranslateX(150);
+        saveNotesThreeButton.setTranslateY(-302);
+        //Changing color for delete and save button
+        deleteNotesThreeButton.setStyle("-fx-background-color: #FF0000");
+        saveNotesThreeButton.setStyle("-fx-background-color: #008000");
+
+        //Adding second text field to the notes scene
+        TextArea notesTextTwo = new TextArea();
+        notesTextTwo.setPrefWidth(500);
+        notesTextTwo.setPrefHeight(85);
+        notesTextTwo.setWrapText(true);
+
+        //Adding third  field to the notes scene
+        TextArea notesTextThree = new TextArea();
+        notesTextThree.setPrefWidth(500);
+        notesTextThree.setPrefHeight(85);
+        notesTextThree.setWrapText(true);
+
+        //Adding all of the text field to the notes scene -- to be displayed
+        notesBox.getChildren().addAll(notesTextOne, notesTextTwo, notesTextThree);
+        //Adding delete and save buttons for each text area
+        notesBox.getChildren().addAll(deleteNotesOneButton, deleteNotesTwoButton, deleteNotesThreeButton, saveNotesOneButton, saveNotesTwoButton, saveNotesThreeButton);
 
         //Adding a button that will return the user to the main scene which they came from
         //Will be able to reutn to the main scene 
@@ -117,6 +187,16 @@ public class MainStage extends Application {
         notesReturnButton.setOnAction(e -> window.setScene(startScene));
         //Adding the button
         notesBox.getChildren().add(notesReturnButton);
+        //Changing color and location of return button
+        notesReturnButton.setTranslateX(170);
+        notesReturnButton.setTranslateY(-300);
+        notesReturnButton.setFont(Font.font("Zapfino", FontWeight.BOLD, 36));
+        notesReturnButton.setStyle("-fx-background-color: #0000FF");
+
+        //Having buttons clear the text that is in the text area
+        deleteNotesOneButton.setOnAction(e -> notesTextOne.clear());
+        deleteNotesTwoButton.setOnAction(e -> notesTextTwo.clear());
+        deleteNotesThreeButton.setOnAction(e -> notesTextThree.clear());
 
         //Setting the auxilliary scenes to show
         window.show();
@@ -245,8 +325,6 @@ public class MainStage extends Application {
 
     }
 
-
-
     public void setWindow(Stage window) {
         this.window = window;
     }
@@ -286,9 +364,6 @@ public class MainStage extends Application {
     public void setDateFormat(DateFormat dateFormat) {
         this.dateFormat = dateFormat;
     }
-    
-    
-    
 
     public static void main(String[] args) {
         launch(args);
