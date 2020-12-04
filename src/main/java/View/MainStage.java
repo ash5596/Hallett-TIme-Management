@@ -28,6 +28,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.Button;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -41,6 +45,7 @@ public class MainStage extends Application {
     //Global Variables
     Stage window;
     Scene notesScene, weekScene, monthScene, loginScene, mainScene, scheduleScene;
+    
     //Variables that are going to be used for week and month view scenes 
     //DOUBLE CHECK LATER IF THEY SHOULD BE PRIVATE VARIABLES OR FINAL OR NEITHER 
     private Locale locale = Locale.US;
@@ -131,7 +136,7 @@ public class MainStage extends Application {
         //Changing color for delete and save button
         deleteNotesOneButton.setStyle("-fx-background-color: #FF0000");
         saveNotesOneButton.setStyle("-fx-background-color: #008000");
-
+        
         //Delete and save buttons for text area two
         Button deleteNotesTwoButton;
         deleteNotesTwoButton = new Button("Delete Text 2");
@@ -191,14 +196,22 @@ public class MainStage extends Application {
         //Changing color and location of return button
         notesReturnButton.setTranslateX(170);
         notesReturnButton.setTranslateY(-300);
-        notesReturnButton.setFont(Font.font("Zapfino", FontWeight.BOLD, 36));
-        notesReturnButton.setStyle("-fx-background-color: #0000FF");
-
+        notesReturnButton.setFont(Font.font("Zapfino", FontWeight.BOLD, 64));
+        notesReturnButton.setStyle("-fx-background-color: #000080;" +
+                                   "-fx-linear-gradient: #7ebcea, #2f4b8f;" +
+                                   "-fx-linear-gradient: #426ab7, #263e75;" +
+                                   "-fx-linear-gradient: #395cab, #223768;" +
+                                   "-fx-background-insets: 0,1,2,3;" +
+                                   "-fx-background-radius: 3,2,2,2;" +
+                                   "-fx-padding: 12 30 12 30;" +
+                                   "-fx-text-fill: white;" +
+                                   "-fx-font-size: 36px;");
+                                                                                           
         //Having buttons clear the text that is in the text area
         deleteNotesOneButton.setOnAction(e -> notesTextOne.clear());
         deleteNotesTwoButton.setOnAction(e -> notesTextTwo.clear());
         deleteNotesThreeButton.setOnAction(e -> notesTextThree.clear());
-
+        
         //Setting the auxilliary scenes to show
         window.show();
 
@@ -211,7 +224,6 @@ public class MainStage extends Application {
         VBox weekBox = new VBox();
         weekBox.setPadding(new Insets(15));
         weekBox.setSpacing(10);
-
         Text weekTitle = new Text("Welcome To The Week by Week View!");
         weekBox.getChildren().add(weekTitle);
         weekTitle.setFont(Font.font("Arial", FontWeight.BOLD, 16));
@@ -219,7 +231,50 @@ public class MainStage extends Application {
         //PROJECT FAILS TO RUN WHEN THIS LINE OF CODE IS ADDED -- (UNSURE WHY)
         //weekBox.getChildren().add(notesTitle);
         //Setting the layout and size for notesScene 
-        weekScene = new Scene(weekBox, 600, 400);
+        weekScene = new Scene(new Group());
+        
+        //Adding a table that can be edited by the user -- week view table 
+        TableView weekTable = new TableView();
+        Label weekLabel = new Label("Week View");
+        weekLabel.setFont(new Font("Arial", 20));
+        weekTable.setEditable(true);
+        //Creating the column
+        TableColumn monday = new TableColumn("Monday");
+        TableColumn tuesday = new TableColumn("Tuesday");
+        TableColumn wednesday = new TableColumn("Wednesday");
+        TableColumn thursday = new TableColumn("Thursday");
+        TableColumn friday = new TableColumn("friday");
+        TableColumn saturday = new TableColumn("Saturday");
+        TableColumn sunday = new TableColumn("Sunday");
+        //Adding column to table
+        weekTable.getColumns().addAll(monday, tuesday, wednesday, thursday, friday, saturday, sunday);
+        //
+        VBox weekViewBox = new VBox();
+        weekViewBox.setSpacing(5);
+        weekViewBox.setPadding(new Insets(10, 0, 0, 10));
+        weekViewBox.getChildren().addAll(weekLabel, weekTable);
+        //
+        ((Group) weekScene.getRoot()).getChildren().addAll(weekViewBox);
+
+        //
+        window.show();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
         //Adding a button that will return the user to the main scene which they came from
         //Will be able to reutn to the main scene 
@@ -228,7 +283,7 @@ public class MainStage extends Application {
         weekReturningButton.setOnAction(e -> window.setScene(startScene));
         //Adding the button
         weekBox.getChildren().add(weekReturningButton);
-
+        //     
         //Setting the auxilliary scenes to show
         window.show();
 
