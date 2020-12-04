@@ -8,20 +8,13 @@ allows users to choose which screen they want to visit.
  */
 package View;
 
-import java.awt.Color;
-import static java.awt.Color.BLUE;
-import static java.awt.SystemColor.window;
-import java.awt.event.ActionEvent;
+
 import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-import javafx.application.Application;
-import static javafx.application.ConditionalFeature.FXML;
 import javafx.application.Platform;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -37,7 +30,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import static javafx.scene.text.FontWeight.BOLD;
 import javafx.scene.text.Text;
 
 public class MainStage extends Application {
@@ -236,27 +228,34 @@ public class MainStage extends Application {
         //Adding a table that can be edited by the user -- week view table 
         TableView weekTable = new TableView();
         Label weekLabel = new Label("Week View");
-        weekLabel.setFont(new Font("Arial", 20));
+        weekLabel.setFont(new Font("Arial", 14));
+        weekLabel.setTranslateY(-8);
         weekTable.setEditable(true);
         //Creating the column
         TableColumn monday = new TableColumn("Monday");
+        monday.setMinWidth(150);
         TableColumn tuesday = new TableColumn("Tuesday");
+        tuesday.setMinWidth(150);
         TableColumn wednesday = new TableColumn("Wednesday");
+        wednesday.setMinWidth(150);
         TableColumn thursday = new TableColumn("Thursday");
+        thursday.setMinWidth(150);
         TableColumn friday = new TableColumn("friday");
+        friday.setMinWidth(150);
         TableColumn saturday = new TableColumn("Saturday");
+        saturday.setMinWidth(150);
         TableColumn sunday = new TableColumn("Sunday");
+        sunday.setMinWidth(150);
         //Adding column to table
         weekTable.getColumns().addAll(monday, tuesday, wednesday, thursday, friday, saturday, sunday);
-        //
+        //Creating VBox to add Table to 
         VBox weekViewBox = new VBox();
         weekViewBox.setSpacing(5);
         weekViewBox.setPadding(new Insets(10, 0, 0, 10));
         weekViewBox.getChildren().addAll(weekLabel, weekTable);
-        //
-        ((Group) weekScene.getRoot()).getChildren().addAll(weekViewBox);
-
-        //
+        //Adding the table and the label to the week view scene
+        ((Group) weekScene.getRoot()).getChildren().addAll(weekViewBox, weekLabel);
+        //Showing the window with the table
         window.show();
         
         
