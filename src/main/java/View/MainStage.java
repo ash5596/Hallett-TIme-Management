@@ -37,7 +37,14 @@ public class MainStage extends Application {
     //Global Variables
     Stage window;
     Scene notesScene, weekScene, monthScene, loginScene, mainScene, scheduleScene;
+    //
+    Stage chooseDateStage;
+    Stage loginStage;
+    Stage createAccountStage;
     
+    
+    
+   
     //Variables that are going to be used for week and month view scenes 
     //DOUBLE CHECK LATER IF THEY SHOULD BE PRIVATE VARIABLES OR FINAL OR NEITHER 
     private Locale locale = Locale.US;
@@ -197,8 +204,7 @@ public class MainStage extends Application {
                                    "-fx-background-radius: 3,2,2,2;" +
                                    "-fx-padding: 12 30 12 30;" +
                                    "-fx-text-fill: white;" +
-                                   "-fx-font-size: 36px;");
-                                                                                           
+                                   "-fx-font-size: 36px;");                                                  
         //Having buttons clear the text that is in the text area
         deleteNotesOneButton.setOnAction(e -> notesTextOne.clear());
         deleteNotesTwoButton.setOnAction(e -> notesTextTwo.clear());
@@ -255,25 +261,23 @@ public class MainStage extends Application {
         weekViewBox.getChildren().addAll(weekLabel, weekTable);
         //Adding the table and the label to the week view scene
         ((Group) weekScene.getRoot()).getChildren().addAll(weekViewBox, weekLabel);
+        //Creating button to go back to the main stage
+        Button returnMainStageButton = new Button("Return");
+        returnMainStageButton.setOnAction(e -> window.setScene(startScene));
+        //Adding return button to VBox
+        weekViewBox.getChildren().add(returnMainStageButton);
+        //Styling for the return button
+        returnMainStageButton.setStyle("-fx-background-color: #000080;" +
+                                   "-fx-linear-gradient: #7ebcea, #2f4b8f;" +
+                                   "-fx-linear-gradient: #426ab7, #263e75;" +
+                                   "-fx-linear-gradient: #395cab, #223768;" +
+                                   "-fx-background-insets: 0,1,2,3;" +
+                                   "-fx-background-radius: 3,2,2,2;" +
+                                   "-fx-padding: 12 30 12 30;" +
+                                   "-fx-text-fill: white;" +
+                                   "-fx-font-size: 12px;");
         //Showing the window with the table
         window.show();
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
         //Adding a button that will return the user to the main scene which they came from
         //Will be able to reutn to the main scene 
@@ -378,6 +382,18 @@ public class MainStage extends Application {
         //Setting the auxilliary scenes to show
         window.show();
 
+    }
+    
+    public Stage getloginStage() {
+        return loginStage;
+    }
+
+    public Stage getchooseDateStage() {
+        return chooseDateStage;
+    }
+
+    public Stage getcreateAccountStage() {
+        return createAccountStage;
     }
 
     public void setWindow(Stage window) {
