@@ -14,37 +14,36 @@ import javafx.stage.Stage;
  * @author Andrew
  */
 public class View {
-    Stage MainStage;
-    Stage Login;
-    Stage ChooseDate;
-    Stage CreateAccount;
+    Stage mainStage;
+    Stage loginStage;
+    Stage chooseDateStage;
+    Stage createAccountStage;
             
     
     public View() {
-        MainStage = new Stage();
-        Login = MainStage.Login();
-        ChooseDate = MainStage.Login();
-        CreateAccount = MainStage.Login();
-        
-        
-                
+        mainStage = new Stage();
+        loginStage = mainStage.getloginStage();
+        chooseDateStage = mainStage.getchooseDateStage();
+        createAccountStage = mainStage.getcreateAccountStage();
+
         
     }
+    
 
     public Stage getMainStage() {
-        return MainStage;
+        return mainStage;
     }
 
-    public Stage getLogin() {
-        return Login;
+    public Stage getLoginStage() {
+        return loginStage;
     }
 
-    public Stage getChooseDate() {
-        return ChooseDate;
+    public Stage getChooseDateStage() {
+        return chooseDateStage;
     }
 
-    public Stage getCreateAccount() {
-        return CreateAccount;
+    public Stage getCreateAccountStage() {
+        return createAccountStage;
     }
  
    
